@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            window.onload = function() {
+                let ids = ["news", "notices", "research", "service", "sns"];
+                let contexts = ["뉴스", "소식", "연구", "서비스", "SNS"];
+                let output = '';
+                for (let i = 0; i < 5; i++) {
+                    output += '<li></li>';
+                }
+                document.querySelector('ul').innerHTML = output;
+                let list = document.querySelectorAll('li');
+                for (let i = 0; i < 5; i++) {
+                    let lis = list[i];
+                    lis.setAttribute("id", ids[i]);
+                    lis.innerHTML = contexts[i];
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <ul id="leftmenu"></ul>
+        </body>
+</html>
