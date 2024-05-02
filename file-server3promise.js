@@ -2,12 +2,14 @@ const fsProm = require("fs").promises;
 const url = require("url"); 
 const path = require("path"); 
 // handler for errors
+
 const output500Error = (response) => { 
  response.writeHead(500, {"Content-Type": "text/html"}); 
  response.write("<h1>500 Error</h1>\n"); 
  response.write("Something went wrong with request\n"); 
  response.end(); 
 }; 
+
 // maps file extention to MIME types
 const mimeTypes = [ 
  ['.html', 'text/html'], 
@@ -16,6 +18,8 @@ const mimeTypes = [
  ['.svg', 'image/svg+xml'] 
 ];
 
+const http = require("http");
+const fs = require("fs");
 const server = http.createServer( async (req, resp) => {
     // get the filename from the URL
     let urlFile = url.parse(req.url).pathname; 
@@ -26,6 +30,8 @@ const server = http.createServer( async (req, resp) => {
     const localPath = __dirname + "/public"; 
     let localFile = path.join(localPath, urlFile); 
     console.log("Filename on device=" + localFile); 
+
+
     // try reading the file
     try { 
         const contents = await fsProm.readFile(localFile);
@@ -40,7 +46,7 @@ const server = http.createServer( async (req, resp) => {
         resp.write(contents);
         resp.end();
         } 
-        catch { 
+    catch { 
         output500Error(resp);
         } 
     });
