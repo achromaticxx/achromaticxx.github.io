@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인하 로그인</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="overflow-y: scroll;">
+    <video autoplay muted loop id="background-video">
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="container">
+        <h1>로그인</h1>
+        <form id="login-form">
+            <input type="text" id="login-username" placeholder="ID" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit">로그인</button>
+        </form>
+        <p>아직 회원이 아니신가요? <a href="signup.html">회원 가입</a></p>
+        <p><a href="index.html">돌아가기</a></p> <!-- 메인 페이지로 돌아가는 링크 -->
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

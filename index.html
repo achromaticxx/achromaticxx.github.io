@@ -1,11 +1,114 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Hello!</title>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inha Weather</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="overflow-y: scroll;">
+    <video autoplay muted loop id="background-video">
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="container">
+        <h1>Inha Weather Infomation Website</h1>
+        <div class="form-group">
+            <label for="city">도시를 선택하세요 : </label>
+            <select id="city">
+                <optgroup label="Republic of Korea">
+                    <option value="Seoul">서울(Seoul)</option>
+                    <option value="Busan">부산(Busan)</option>
+                    <option value="Incheon">인천(Incheon)</option>
+                    <option value="Daegu">대구(Daegu)</option>
+                    <option value="Gwangju">광주(Gwangju)</option>
+                </optgroup>
+                <optgroup label="Japan">
+                    <option value="Tokyo">도쿄(Tokyo)</option>
+                    <option value="Osaka">오사카(Osaka)</option>
+                </optgroup>
+                <optgroup label="China">
+                    <option value="Beijing">베이징(Beijing)</option>
+                    <option value="Shanghai">상하이(ShangHai)</option>
+                </optgroup>
+                <optgroup label="U.S.A">
+                    <option value="New York">뉴욕(New York)</option>
+                    <option value="Los Angeles">로스엔젤레스(Los Angeles)</option>
+                    <option value="San Francisco">샌프란시스코(San Francisco)</option>
+                </optgroup>
+                <optgroup label="Europe">
+                    <option value="Paris">파리(Paris)</option>
+                    <option value="London">런던(London)</option>
+                    <option value="Rome">로마(Rome)</option>
+                    <option value="Berlin">베를린(Berlin)</option>
+                </optgroup>
+                <optgroup label="Other">
+                    <option value="Russia">러시아(Russia)</option>
+                    <opiton value="India">인도(India)</opiton>
+                    <option value="Thailand">태국(Thailand)</option>
+                    <option value="Moon">달(Moon)</option>
+                </optgroup>
+            </select>
+            <button onclick="getWeather()">검색</button>
+        </div>
+        <div id="weather"></div>
+        <canvas id="weatherChart" width="400" height="200"></canvas>
 
-    <body>
-        <h1>Hello! I'm Minje Kim</h1>
-        <p>Currently, I am studying Internet Programming course in Spring 2024 and my major is computer engineering</p>
-    </body>
+        <!-- 로그인 상태에서만 표시되는 선호 지역 설정 폼 -->
+        <div id="user-info" style="display: none;"> 
+            <h2>로그인 정보</h2>
+            <p id="username"></p>
+            <p id="preferred-location"></p>
+            <h3>선호지역 설정</h3>
+            <form id="location-form">
+                <label for="preferred-city">선호지역:</label>
+                <select id="preferred-city">
+                    <optgroup label="Republic of Korea">
+                        <option value="Seoul">서울(Seoul)</option>
+                        <option value="Busan">부산(Busan)</option>
+                        <option value="Incheon">인천(Incheon)</option>
+                        <option value="Daegu">대구(Daegu)</option>
+                        <option value="Gwangju">광주(Gwangju)</option>
+                    </optgroup>
+                    <optgroup label="Japan">
+                        <option value="Tokyo">도쿄(Tokyo)</option>
+                        <option value="Osaka">오사카(Osaka)</option>
+                    </optgroup>
+                    <optgroup label="China">
+                        <option value="Beijing">베이징(Beijing)</option>
+                        <option value="Shanghai">상하이(ShangHai)</option>
+                    </optgroup>
+                    <optgroup label="U.S.A">
+                        <option value="New York">뉴욕(New York)</option>
+                        <option value="Los Angeles">로스엔젤레스(Los Angeles)</option>
+                        <option value="San Francisco">샌프란시스코(San Francisco)</option>
+                    </optgroup>
+                    <optgroup label="Europe">
+                        <option value="Paris">파리(Paris)</option>
+                        <option value="London">(런던)London</option>
+                        <option value="Rome">(로마)Rome</option>
+                        <option value="Berlin">(베를린)Berlin</option>
+                    </optgroup>
+                    <optgroup label="Other">
+                        <option value="Russia">러시아(Russia)</option>
+                        <opiton value="India">인도(India)</opiton>
+                        <option value="Thailand">태국(Thailand)</option>
+                        <option value="Moon">달(Moon)</option>
+                    </optgroup>
+                </select>
+                <button type="submit">저장</button>
+            </form>
+        </div>
+
+        <button id="logout-btn" style="display: none;" onclick="logout()">로그아웃</button>
+        
+        <!-- 로그인 및 회원가입 링크 -->
+        <div id="auth-links">
+            <p>아직 회원이 아니신가요?&nbsp;&nbsp;<a href="signup.html">회원가입</a></p>
+            <p>이미 아이디를 가지고 계신가요?&nbsp;&nbsp;<a href="login.html">로그인</a></p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
 </html>
